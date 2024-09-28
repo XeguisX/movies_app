@@ -12,7 +12,7 @@ class MovieDatasourceImpl implements MovieRepository {
   final Dio dio = ProviderContainer().read(dioProvider);
 
   @override
-  Future<List<Movie>> getMovies() async {
+  Future<List<Movie>> fecthMovies() async {
     try {
       final response = await dio.get('/3/movie/now_playing', queryParameters: {
         'api_key': apiKey,
