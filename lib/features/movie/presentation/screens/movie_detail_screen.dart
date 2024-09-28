@@ -37,7 +37,7 @@ class _MovieDetailScreenState extends ConsumerState<MovieDetailScreen> {
                         .catchError(
                       (error) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text(context.tr('error'))),
+                          SnackBar(content: Text('error'.tr())),
                         );
                       },
                     );
@@ -170,7 +170,7 @@ class SearchMoreInfoButton extends StatelessWidget {
             const Icon(Icons.search),
             const SizedBox(width: 8),
             Text(
-              context.tr('more_info'),
+              'more_info'.tr(),
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,

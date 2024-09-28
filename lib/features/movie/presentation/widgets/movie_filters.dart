@@ -24,7 +24,7 @@ class MovieFilters extends ConsumerWidget {
         children: [
           const SizedBox(height: 16),
           CustomTextField(
-            labelText: context.tr('search_by_name'),
+            labelText: 'search_by_name'.tr(),
             controller: searchController,
             onChanged: (value) {
               ref.read(nameFilterProvider.notifier).state = value;
@@ -33,7 +33,7 @@ class MovieFilters extends ConsumerWidget {
           ),
           const SizedBox(height: 16),
           CustomDropdown(
-            labelText: context.tr('select_genre'),
+            labelText: 'select_genre'.tr(),
             value: ref.watch(categoryFilterProvider.notifier).state,
             items: <String>['All', ...uniqueGenres],
             onChanged: (value) {

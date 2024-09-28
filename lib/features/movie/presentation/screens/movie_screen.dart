@@ -49,28 +49,27 @@ class _MovieScreenState extends ConsumerState<MovieScreen> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.lightBlue,
+          backgroundColor: Colors.transparent,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Icon(
                 Icons.movie_filter,
-                color: Colors.white,
+                color: Colors.black,
               ),
               const SizedBox(width: 10),
               Text(
-                context.tr('movies'),
+                'movies'.tr(),
                 style: const TextStyle(
                   fontSize: 24,
                   letterSpacing: 1.2,
-                  color: Colors.white,
+                  color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ],
           ),
           centerTitle: true,
-          elevation: 4.0,
         ),
         body: SafeArea(
           child: movieAsyncValue.when(

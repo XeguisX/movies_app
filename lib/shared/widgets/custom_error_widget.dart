@@ -18,7 +18,7 @@ class CustomErrorWidget extends ConsumerWidget {
           const Icon(Icons.error, size: 100, color: Colors.red),
           const SizedBox(height: 16),
           Text(
-            context.tr('failed_load_movies'),
+            'failed_load_movies'.tr(),
             style: const TextStyle(fontSize: 18, color: Colors.red),
           ),
           const SizedBox(height: 16),
