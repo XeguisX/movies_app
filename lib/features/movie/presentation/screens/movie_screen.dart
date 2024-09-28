@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:movies_app/features/movie/domain/entities/movie.dart';
 
-import 'package:movies_app/features/movie/presentation/view_model/movie_provider.dart';
+import 'package:movies_app/features/movie/domain/entities/movie.dart';
+import 'package:movies_app/features/movie/presentation/provider/providers.dart';
 import 'package:movies_app/features/movie/presentation/widgets/movie_card.dart';
-import 'package:movies_app/features/shared/widgets/widgets.dart';
+import 'package:movies_app/shared/widgets/widgets.dart';
 
 class MovieScreen extends ConsumerStatefulWidget {
   const MovieScreen({super.key});

@@ -49,6 +49,11 @@
 	<array>
 		<string>http</string>
 		<string>https</string>
-</array>
+	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need your location to show nearby places.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We need your location to show nearby places.</string>
+
 </dict>
 </plist>

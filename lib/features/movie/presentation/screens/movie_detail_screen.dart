@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movies_app/features/movie/domain/entities/movie.dart';
-import 'package:movies_app/features/movie/presentation/view_model/movie_provider.dart';
-import 'package:movies_app/features/shared/widgets/widgets.dart';
+import 'package:movies_app/features/movie/presentation/provider/providers.dart';
+import 'package:movies_app/shared/widgets/widgets.dart';
 
 class MovieDetailScreen extends ConsumerStatefulWidget {
   const MovieDetailScreen({super.key, required this.movie});
@@ -27,18 +27,20 @@ class _MovieDetailScreenState extends ConsumerState<MovieDetailScreen> {
                 _PosterAndTitle(movie: widget.movie),
                 _Overview(movie: widget.movie),
                 const SizedBox(height: 10),
-                ElevatedButton(
+                SearchMoreInfoButton(
+                  movieTitle: widget.movie.title,
                   onPressed: () {
                     ref
-                        .read(searchProvider(widget.movie.title).future)
+                        .read(searchNavigateProvider(widget.movie.title).future)
                         .then((_) {})
-                        .catchError((error) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Error: $error')),
-                      );
-                    });
+                        .catchError(
+                      (error) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Error: $error')),
+                        );
+                      },
+                    );
                   },
-                  child: const Text('Find More Info'),
                 ),
               ],
             ),
@@ -131,6 +133,50 @@ class _Overview extends StatelessWidget {
             style: Theme.of(context).textTheme.labelMedium,
           ),
         ],
+      ),
+    );
+  }
+}
+
+class SearchMoreInfoButton extends StatelessWidget {
+  final String movieTitle;
+  final Function() onPressed;
+
+  const SearchMoreInfoButton({
+    super.key,
+    required this.movieTitle,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          foregroundColor: Colors.white,
+          backgroundColor: Colors.blueAccent,
+          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30),
+            side: const BorderSide(color: Colors.blueAccent),
+          ),
+        ),
+        onPressed: onPressed,
+        child: const Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.search),
+            SizedBox(width: 8),
+            Text(
+              'Find More Info',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

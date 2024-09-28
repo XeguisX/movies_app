@@ -2,36 +2,31 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:movies_app/app.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
-
-import 'package:movies_app/features/movie/presentation/screens/movie_screen.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 Future<void> main() async {
-  runZonedGuarded(() async {
-    await SentryFlutter.init(
-      (options) {
-        options.dsn =
-            'https://06a01abe7bc69714bcc748881bcc1d62@o4508030646616064.ingest.us.sentry.io/4508030655070208';
-      },
-    );
+  WidgetsFlutterBinding.ensureInitialized();
 
-    runApp(const ProviderScope(child: MyApp()));
-  }, (exception, stackTrace) async {
-    await Sentry.captureException(exception, stackTrace: stackTrace);
-  });
-}
+  await SentryFlutter.init(
+    (options) {
+      options.dsn =
+          'https://06a01abe7bc69714bcc748881bcc1d62@o4508030646616064.ingest.us.sentry.io/4508030655070208';
+    },
+  );
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  await EasyLocalization.ensureInitialized();
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Material App',
-      routes: {
-        '/': (context) => const MovieScreen(),
-      },
-      initialRoute: '/',
-    );
-  }
+  runApp(
+    EasyLocalization(
+      supportedLocales: const [
+        Locale('en', 'US'),
+        Locale('es', 'ES'),
+      ],
+      path: 'lang',
+      fallbackLocale: const Locale('en', 'US'),
+      child: const ProviderScope(child: MyApp()),
+    ),
+  );
 }

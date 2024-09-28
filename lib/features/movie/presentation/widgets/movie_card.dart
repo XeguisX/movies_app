@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/features/movie/domain/entities/movie.dart';
-import 'package:movies_app/features/movie/presentation/widgets/movie_detail_screen.dart';
+import 'package:movies_app/features/movie/presentation/screens/movie_detail_screen.dart';
 
 class MovieCard extends StatelessWidget {
   const MovieCard({super.key, required this.movie, required this.heroId});
