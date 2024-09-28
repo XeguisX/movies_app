@@ -1,4 +1,8 @@
 {
-    "title": "Hello World",
-    "greeting": "Welcome to our app!"
+    "error": "An error has occurred",
+    "more_info": "Find more info",
+    "movies": "Movies",
+    "failed_load_movies": "Failed to load movies",
+    "search_by_name": "Search By Name",
+    "select_genre": "Select Genre"
 }

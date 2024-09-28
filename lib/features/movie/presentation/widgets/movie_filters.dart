@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -21,16 +22,9 @@ class MovieFilters extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Filters',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
           const SizedBox(height: 16),
           CustomTextField(
-            labelText: 'Search by Name',
+            labelText: context.tr('search_by_name'),
             controller: searchController,
             onChanged: (value) {
               ref.read(nameFilterProvider.notifier).state = value;
@@ -39,6 +33,7 @@ class MovieFilters extends ConsumerWidget {
           ),
           const SizedBox(height: 16),
           CustomDropdown(
+            labelText: context.tr('select_genre'),
             value: ref.watch(categoryFilterProvider.notifier).state,
             items: <String>['All', ...uniqueGenres],
             onChanged: (value) {

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movies_app/features/movie/domain/entities/movie.dart';
@@ -36,7 +37,7 @@ class _MovieDetailScreenState extends ConsumerState<MovieDetailScreen> {
                         .catchError(
                       (error) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Error: $error')),
+                          SnackBar(content: Text(context.tr('error'))),
                         );
                       },
                     );
@@ -163,14 +164,14 @@ class SearchMoreInfoButton extends StatelessWidget {
           ),
         ),
         onPressed: onPressed,
-        child: const Row(
+        child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.search),
-            SizedBox(width: 8),
+            const Icon(Icons.search),
+            const SizedBox(width: 8),
             Text(
-              'Find More Info',
-              style: TextStyle(
+              context.tr('more_info'),
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 class CustomDropdown extends StatelessWidget {
-  final String? value;
+  final String? value, labelText;
   final List<String> items;
   final ValueChanged<String?> onChanged;
 
   const CustomDropdown({
     super.key,
     required this.value,
+    required this.labelText,
     required this.items,
     required this.onChanged,
   });
@@ -22,7 +23,7 @@ class CustomDropdown extends StatelessWidget {
         ),
         filled: true,
         fillColor: Colors.white,
-        labelText: 'Select Genre',
+        labelText: labelText,
         labelStyle: TextStyle(color: Colors.grey[600]),
       ),
       value: value,

@@ -1,4 +1,8 @@
 {
-    "title": "Hello World",
-    "greeting": "Welcome to our app!"
+    "error": "Ha ocurrido un error",
+    "more_info": "Buscar más información",
+    "movies": "Películas",
+    "failed_load_movies": "Error al cargar las películas",
+    "search_by_name": "Buscar por nombre",
+    "select_genre": "Seleccionar género"
 }
