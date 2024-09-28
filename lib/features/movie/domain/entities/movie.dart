@@ -14,6 +14,7 @@ class Movie {
     required this.video,
     required this.voteAverage,
     required this.voteCount,
+    this.heroId,
   });
 
   final bool adult;
@@ -30,6 +31,29 @@ class Movie {
   final bool video;
   final double voteAverage;
   final int voteCount;
+
+  String? heroId;
+
+  List<String> get genres {
+    return genreIds.map((id) => getGenreNameById(id)).toList();
+  }
+
+  String getGenreNameById(int id) {
+    switch (id) {
+      case 28:
+        return 'Action';
+      case 16:
+        return 'Animation';
+      case 35:
+        return 'Comedy';
+      case 18:
+        return 'Drama';
+      case 27:
+        return 'Horror';
+      default:
+        return 'Others';
+    }
+  }
 
   get fullPosterImg {
     if (posterPath != null) {
