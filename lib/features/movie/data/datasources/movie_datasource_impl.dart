@@ -3,12 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movies_app/di/di_container.dart';
 import 'package:movies_app/features/movie/data/mappers/movie_mappers.dart';
 import 'package:movies_app/features/movie/data/models/movies_model.dart';
-import 'package:movies_app/features/movie/domain/datasources/movie_datasource.dart';
 import 'package:movies_app/features/movie/domain/entities/movie.dart';
+import 'package:movies_app/features/movie/domain/repositories/movie_repository.dart';
 import 'package:movies_app/shared/constanst.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-class MovieDatasourceImpl implements MovieDatasource {
+class MovieDatasourceImpl implements MovieRepository {
   final Dio dio = ProviderContainer().read(dioProvider);
 
   @override
